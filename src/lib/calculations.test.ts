@@ -1,0 +1,10 @@
+import {monthlyKwh,energyCost,savedKwh,totals,validate} from './calculations';
+import assert from 'node:assert';
+const a={watts:100,hoursPerDay:5,daysPerMonth:30};
+assert.strictEqual(monthlyKwh(a),15);
+assert.strictEqual(energyCost(15,8),120);
+assert.strictEqual(savedKwh(100,1,30),3);
+assert.strictEqual(monthlyKwh({watts:0,hoursPerDay:5,daysPerMonth:30}),0);
+assert.strictEqual(totals([],{tariff:8,fixedCharge:50}).bill,50);
+assert.ok(validate({name:' ',watts:-1,hoursPerDay:25,daysPerMonth:32}).name);
+console.log('All calculation tests passed.');
